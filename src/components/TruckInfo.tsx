@@ -39,7 +39,6 @@ export function TruckInfo({ truck }: TruckInfoProps) {
 
       {/* Gear Display */}
       <div className="text-center">
-        {/* @ts-ignore */}
         <div className={`inline-block w-16 h-16 rounded-lg border-2 flex items-center justify-center text-2xl font-mono font-black ${
           truck.displayedGear === 0 
             ? 'border-gray-500 text-gray-400' 
