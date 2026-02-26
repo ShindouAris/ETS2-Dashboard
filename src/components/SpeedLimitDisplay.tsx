@@ -100,7 +100,7 @@ export function SpeedLimitDisplay({ navigation, truck }: SpeedLimitDisplayProps)
         <div className="flex flex-col items-center gap-2">
           <div className="w-30 h-30 rounded-full border-12 border-red-500 bg-white flex items-center justify-center shadow-lg">
             {speedLimit > 0 ? (
-              <span className="text-3xl font-black text-black leading-none font-BebasNeue_Regular">
+              <span className="text-5xl font-black text-black leading-none font-BebasNeue_Regular">
           {Math.abs(speedLimit)}
               </span>
             ) : (
