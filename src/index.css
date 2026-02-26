@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@theme {
+  --font-BebasNeue_Regular: 'BebasNeue-Regular', sans-serif;
+}
+
+@font-face {
+  font-family: 'BebasNeue-Regular';
+  src: url('/fonts/BebasNeue-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'JetBrains Mono', 'Consolas', monospace;
+    background-color: #0a0a0a;
+    color: white;
+    overflow-x: hidden;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
