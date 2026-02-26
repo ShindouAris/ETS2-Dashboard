@@ -30,16 +30,13 @@ export function SpeedLimitDisplay({ navigation, truck }: SpeedLimitDisplayProps)
               </span>
             )}
           </div>
-          <span className="text-xs text-gray-400 tracking-widest uppercase font-mono">
-            Giới hạn tốc độ
-          </span>
         </div>
 
         {/* Current Speed */}
         <div className="flex flex-col items-center gap-2">
-          <div className={`w-30 h-30 rounded-full border-4 flex flex-col items-center justify-center transition-all duration-300 ${
+          <div className={`w-30 h-30 rounded-full border-6 flex flex-col items-center justify-center transition-all duration-300 ${
             isOverSpeed
-              ? ' border-red-600 shadow-lg shadow-red-500/50'
+              ? ' border-red-600'
               : ' border-violet-900'
           }`}>
             <span className={`text-4xl font-black leading-none font-BebasNeue_Regular ${
@@ -53,42 +50,9 @@ export function SpeedLimitDisplay({ navigation, truck }: SpeedLimitDisplayProps)
               km/h
             </span>
           </div>
-          <span className="text-xs text-gray-400 tracking-widest uppercase font-mono">
-            CURRENT
-          </span>
         </div>
       </div>
 
-      {/* Status Indicator */}
-      <div className="flex items-center justify-center gap-2">
-        <div className={`w-3 h-3 rounded-full ${
-          speedLimit === 0
-            ? 'bg-gray-500'
-            : isOverSpeed
-            ? 'bg-red-500 animate-pulse'
-            : 'bg-emerald-400'
-        }`} />
-        <span className={`text-sm font-mono font-bold tracking-wider uppercase ${
-          speedLimit === 0
-            ? 'text-gray-400'
-            : isOverSpeed
-            ? 'text-red-400'
-            : 'text-emerald-400'
-        }`}>
-          {speedLimit === 0 ? 'NO LIMIT' : isOverSpeed ? 'OVERSPEED' : 'NORMAL'}
-        </span>
-      </div>
-
-      {/* Speed difference indicator */}
-      {speedLimit > 0 && (
-        <div className="text-center">
-          <div className={`text-lg font-mono font-bold ${
-            isOverSpeed ? 'text-red-400' : 'text-gray-400'
-          }`}>
-            {isOverSpeed ? '+' : ''}{currentSpeed - speedLimit} km/h
-          </div>
-        </div>
-      )}
     </div>
   );
 }

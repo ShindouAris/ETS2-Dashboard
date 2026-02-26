@@ -25,7 +25,8 @@ export function useHybridTelemetry(options: UseHybridTelemetryOptions = {}) {
   const websocketTimeout = options.websocketTimeout || 5000;
   const pollingInterval = options.pollingInterval || 500; // Reduced from 1000ms to 500ms  
   const preferWebSocket = options.preferWebSocket !== false; // Default to true
-  const updateFrequency = options.updateFrequency || 200; // Default 200ms = 5 FPS
+  // const updateFrequency = options.updateFrequency || 200; // Default 200ms = 5 FPS
+  const [updateFrequency, setUpdateFrequency] = useState(options.updateFrequency || 200);
 
   const stopPolling = () => {
     if (pollingIntervalRef.current) {
@@ -184,6 +185,7 @@ export function useHybridTelemetry(options: UseHybridTelemetryOptions = {}) {
     connectionType,
     reconnect,
     switchToPolling,
-    switchToWebSocket
+    switchToWebSocket,
+    setUpdateFrequency
   };
 }

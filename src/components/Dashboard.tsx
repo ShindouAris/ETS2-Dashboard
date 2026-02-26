@@ -126,7 +126,7 @@ export function Dashboard() {
         {/* Header */}
         <div className="mb-6 text-center">
           <h1 className="text-3xl font-mono font-bold text-dashboard-accent tracking-wider">
-            ETS2 TELEMETRY DASHBOARD
+            ETS2 DASHBOARD
           </h1>
           <div className="flex items-center justify-center gap-4 mt-2">
             <div className="flex items-center gap-2">

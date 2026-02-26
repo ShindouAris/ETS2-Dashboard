@@ -6,7 +6,7 @@ interface TruckInfoProps {
 
 export function TruckInfo({ truck }: TruckInfoProps) {
   const gearDisplay = truck.displayedGear > 0 
-    ? truck.displayedGear 
+    ? truck.displayedGear -2
     : truck.displayedGear < 0 
       ? `R${Math.abs(truck.displayedGear)}` 
       : 'N';
@@ -39,6 +39,7 @@ export function TruckInfo({ truck }: TruckInfoProps) {
 
       {/* Gear Display */}
       <div className="text-center">
+        {/* @ts-ignore */}
         <div className={`inline-block w-16 h-16 rounded-lg border-2 flex items-center justify-center text-2xl font-mono font-black ${
           truck.displayedGear === 0 
             ? 'border-gray-500 text-gray-400' 
