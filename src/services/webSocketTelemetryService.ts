@@ -187,7 +187,6 @@ export class WebSocketTelemetryService {
 
   private handleMessage(data: string): void {
     try {
-      console.log('Received message:', data);
       
       // Handle empty keepalive messages
       if (!data || data.trim() === '') {
@@ -204,7 +203,6 @@ export class WebSocketTelemetryService {
             if (methodCall.A && methodCall.A.length > 0) {
               try {
                 const telemetryData: Ets2TelemetryData = JSON.parse(methodCall.A[0]);
-                console.log('Parsed telemetry data:', telemetryData);
                 
                 if (this.dataCallback) {
                   this.dataCallback(telemetryData);
@@ -220,10 +218,8 @@ export class WebSocketTelemetryService {
         });
       } else if (message.C) {
         // Connection message
-        console.log('Connection message:', message.C);
       } else if (message.S) {
         // State message
-        console.log('State message:', message.S);
       }
 
     } catch (error) {
@@ -242,7 +238,6 @@ export class WebSocketTelemetryService {
       I: ++this.messageId
     };
 
-    console.log('Requesting data update:', requestMessage);
     this.sendMessage(requestMessage);
   }
 
