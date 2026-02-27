@@ -11,6 +11,17 @@
   font-style: normal;
 }
 
+@keyframes blink {
+  0%,100% {
+    border-color: #c41919;
+    box-shadow: inset 0 0 10px #c52222;
+  }
+  50% {
+    border-color: #a31616;
+    box-shadow: inset 0 0 25px #a31616;
+  }
+}
+
 @layer base {
   * {
     box-sizing: border-box;

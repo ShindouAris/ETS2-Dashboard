@@ -21,8 +21,8 @@ function WearItem({ label, value, warning }: WearItemProps) {
       <div className="flex justify-between text-xs font-mono">
         <span className="text-gray-300">{label}</span>
         <span className={`${
-          isCritical ? 'text-dashboard-danger' : 
-          isHigh ? 'text-dashboard-warning' : 'text-gray-300'
+          isCritical ? 'text-red-500 animate-pulse' : 
+          isHigh ? 'text-yellow-300' : 'text-gray-300'
         }`}>
           {percentage.toFixed(0)}%
         </span>
@@ -30,8 +30,8 @@ function WearItem({ label, value, warning }: WearItemProps) {
       <div className="w-full bg-gray-700 rounded-full h-2">
         <div
           className={`h-2 rounded-full transition-all duration-300 ${
-            isCritical ? 'bg-dashboard-danger animate-pulse' : 
-            isHigh ? 'bg-dashboard-warning' : 'bg-dashboard-accent'
+            isCritical ? 'bg-red-600 animate-pulse' : 
+            isHigh ? 'bg-yellow-600' : 'bg-green-600'
           }`}
           style={{ width: `${percentage}%` }}
         />

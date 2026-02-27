@@ -9,10 +9,10 @@ interface LightIndicatorProps {
 
 function LightIndicator({ label, isOn, color = 'green', blink }: LightIndicatorProps) {
   const colorClasses = {
-    green: isOn ? 'bg-dashboard-accent border-dashboard-accent text-black' : 'bg-gray-700 border-gray-600 text-gray-500',
-    yellow: isOn ? 'bg-dashboard-warning border-dashboard-warning text-black' : 'bg-gray-700 border-gray-600 text-gray-500',
-    red: isOn ? 'bg-dashboard-danger border-dashboard-danger text-white' : 'bg-gray-700 border-gray-600 text-gray-500',
-    blue: isOn ? 'bg-dashboard-info border-dashboard-info text-white' : 'bg-gray-700 border-gray-600 text-gray-500'
+    green: isOn ? 'bg-blue-400 border-blue-400 text-black' : 'bg-gray-700 border-gray-600 text-gray-500',
+    yellow: isOn ? 'bg-yellow-600 border-yellow-600 text-black' : 'bg-gray-700 border-gray-600 text-gray-500',
+    red: isOn ? 'bg-red-600 border-red-600 text-white' : 'bg-gray-700 border-gray-600 text-gray-500',
+    blue: isOn ? 'bg-blue-600 border-blue-600 text-white' : 'bg-gray-700 border-gray-600 text-gray-500'
   };
 
   return (
@@ -39,8 +39,8 @@ export function LightsPanel({ truck }: LightsPanelProps) {
   const airPressureWarning = truck.airPressureWarningOn || truck.airPressureEmergencyOn;
 
   return (
-    <div className="bg-dashboard-card border border-dashboard-border rounded-xl p-4 space-y-4">
-      <h3 className="text-dashboard-accent font-mono text-sm font-bold tracking-wider">
+    <div className="bg-gray-400 border border-green-300 rounded-xl p-4 space-y-4">
+      <h3 className="text-blue-500 font-mono text-sm font-bold tracking-wider">
         LIGHTS & SIGNALS
       </h3>
       

@@ -58,8 +58,8 @@ export function TruckInfo({ truck }: TruckInfoProps) {
         <div className="w-full bg-gray-700 rounded-full h-3">
           <div
             className={`h-3 rounded-full transition-all duration-300 ${
-              rpmPercentage > 80 ? 'bg-dashboard-danger' : 
-              rpmPercentage > 60 ? 'bg-dashboard-warning' : 'bg-dashboard-info'
+              rpmPercentage > 80 ? 'bg-red-600 animate-pulse' : 
+              rpmPercentage > 60 ? 'bg-yellow-600' : 'bg-green-600'
             }`}
             style={{ width: `${rpmPercentage}%` }}
           />
@@ -75,8 +75,8 @@ export function TruckInfo({ truck }: TruckInfoProps) {
         <div className="w-full bg-gray-700 rounded-full h-3">
           <div
             className={`h-3 rounded-full transition-all duration-300 ${
-              fuelPercentage < 20 ? 'bg-dashboard-danger animate-pulse' : 
-              fuelPercentage < 40 ? 'bg-dashboard-warning' : 'bg-dashboard-accent'
+              fuelPercentage < 20 ? 'bg-red-600 animate-pulse' : 
+              fuelPercentage < 40 ? 'bg-yellow-600' : 'bg-green-600'
             }`}
             style={{ width: `${fuelPercentage}%` }}
           />

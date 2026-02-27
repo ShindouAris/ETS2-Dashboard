@@ -12,9 +12,9 @@ function InputBar({ label, userValue, gameValue, color = 'blue' }: InputBarProps
   const gamePercentage = gameValue * 100;
   
   const colorClasses = {
-    blue: 'bg-dashboard-info',
-    red: 'bg-dashboard-danger', 
-    green: 'bg-dashboard-accent'
+    blue: 'bg-blue-500',
+    red: 'bg-red-500', 
+    green: 'bg-green-500'
   };
 
   return (
@@ -93,7 +93,7 @@ export function InputBars({ truck }: InputBarsProps) {
         {truck.retarderBrake > 0 && (
           <div className="flex justify-between text-xs font-mono">
             <span className="text-gray-400">RETARDER:</span>
-            <span className="text-dashboard-warning">{truck.retarderBrake}/{truck.retarderStepCount}</span>
+            <span className="text-red-600">{truck.retarderBrake}/{truck.retarderStepCount}</span>
           </div>
         )}
       </div>

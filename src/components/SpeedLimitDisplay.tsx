@@ -103,10 +103,7 @@ export function SpeedLimitDisplay({ navigation, truck }: SpeedLimitDisplayProps)
     
   
   return (
-    <div className="bg-dashboard-card border border-dashboard-border rounded-xl p-6 space-y-4">
-      <h2 className="text-dashboard-accent font-mono text-lg font-bold tracking-wider text-center">
-        SPEED MONITOR
-      </h2>
+    <div className={`bg-dashboard-card border rounded-xl p-6 space-y-4 ${overspeedActive ? 'animate-blink animate-[blink_1s_infinite_ease-in-out]' : ''}`}>
       
       <div className="flex items-center justify-center gap-8">
         {/* Speed Limit Sign */}
@@ -151,7 +148,7 @@ export function SpeedLimitDisplay({ navigation, truck }: SpeedLimitDisplayProps)
           onClick={unlockSound}
           className={`px-4 py-1.5 text-xs font-mono tracking-wider rounded-lg border transition-all duration-300 ${
             soundUnlocked
-              ? 'border-green-600 text-green-500 bg-green-950 cursor-default'
+              ? 'border-green-600 text-green-500 bg-green-950 cursor-default hidden'
               : 'border-yellow-600 text-yellow-400 bg-yellow-950 hover:bg-yellow-900 cursor-pointer'
           }`}
           disabled={soundUnlocked}

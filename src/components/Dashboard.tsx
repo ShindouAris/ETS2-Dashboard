@@ -132,14 +132,14 @@ export function Dashboard() {
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-dashboard-accent animate-pulse" />
               <span className="text-sm font-mono text-gray-400">
-                Connected • {data.game.version}
+                Đã kết nối • {data.game.version}
               </span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className={`flex items-center gap-2 border border-gray-500 rounded-xl px-2 ${connectionType === 'websocket' ? 'bg-green-300/30' : 'bg-blue-300/30'}`}>
               <div className={`w-2 h-2 rounded-full ${
                 connectionType === 'websocket' ? 'bg-green-400' : 'bg-blue-400'
               }`} />
-              <span className="text-xs font-mono text-gray-500">
+              <span className="text-xs font-mono text-white">
                 {connectionType === 'websocket' ? 'WebSocket' : 'HTTP Polling'}
               </span>
             </div>

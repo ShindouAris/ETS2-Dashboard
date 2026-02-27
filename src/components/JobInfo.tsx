@@ -23,6 +23,16 @@ export function JobInfo({ job, trailer }: JobInfoProps) {
 
   const trailerMassInTons = (trailer.mass / 1000).toFixed(1);
 
+  function formatRemaining(iso: string) {
+      const d = new Date(iso)
+
+      const days = d.getUTCDate() - 1
+      const hours = d.getUTCHours()
+      const minutes = d.getUTCMinutes()
+
+      return `${days}d ${hours}h ${minutes}m`
+}
+
   return (
     <div className="bg-dashboard-card border border-dashboard-border rounded-xl p-4 space-y-3">
       <h3 className="text-dashboard-accent font-mono text-sm font-bold tracking-wider">
@@ -61,7 +71,7 @@ export function JobInfo({ job, trailer }: JobInfoProps) {
         {job.remainingTime && (
           <div className="flex justify-between">
             <span className="text-gray-400">DEADLINE:</span>
-            <span className="text-dashboard-warning">{job.remainingTime}</span>
+            <span className="text-dashboard-warning">{formatRemaining(job.remainingTime)}</span>
           </div>
         )}
 
