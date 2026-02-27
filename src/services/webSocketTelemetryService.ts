@@ -112,7 +112,7 @@ export class WebSocketTelemetryService {
           this.cleanup();
           
           if (this.statusCallback) {
-            this.statusCallback(false, 'Disconnected');
+            this.statusCallback(false, 'Đã ngắt kết nối');
           }
           
           // Auto reconnect if not intentionally closed

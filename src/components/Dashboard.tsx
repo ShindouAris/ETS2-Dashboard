@@ -29,7 +29,7 @@ export function Dashboard() {
             <span className="text-dashboard-danger text-2xl font-bold">!</span>
           </div>
           <h2 className="text-dashboard-danger font-mono text-lg font-bold mb-2">
-            CONNECTION ERROR
+            Mất kết nối
           </h2>
           <p className="text-gray-400 font-mono text-sm mb-4">
             {error}
@@ -39,14 +39,14 @@ export function Dashboard() {
               onClick={reconnect}
               className="px-4 py-2 bg-dashboard-danger text-white font-mono text-sm rounded-lg hover:bg-dashboard-danger/80 transition-colors"
             >
-              RECONNECT
+              Kết nối lại
             </button>
             {connectionType === 'websocket' && (
               <button 
                 onClick={switchToPolling}
                 className="px-4 py-2 bg-dashboard-accent text-white font-mono text-sm rounded-lg hover:bg-dashboard-accent/80 transition-colors"
               >
-                USE POLLING
+                Sử dụng HTTP Polling
               </button>
             )}
           </div>
@@ -113,7 +113,7 @@ export function Dashboard() {
             WAITING FOR GAME
           </h2>
           <p className="text-gray-400 font-mono text-sm">
-            Please start Euro Truck Simulator 2 or American Truck Simulator
+            Please start Euro Truck Simulator 2
           </p>
         </div>
       </div>

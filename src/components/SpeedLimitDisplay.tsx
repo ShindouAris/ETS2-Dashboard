@@ -13,6 +13,9 @@ export function SpeedLimitDisplay({ navigation, truck }: SpeedLimitDisplayProps)
   const [soundUnlocked, setSoundUnlocked] = useState(false);
   const audioContextRef = useRef<AudioContext | null>(null);
 
+  // Audio queue system
+  const audioQueueRef = useRef<number[]>([]);
+  const isPlayingRef = useRef(false);
 
   const unlockSound = () => {
     if (!audioContextRef.current) {
@@ -36,39 +39,49 @@ export function SpeedLimitDisplay({ navigation, truck }: SpeedLimitDisplayProps)
     audio.play().catch((e) => {console.error('Error playing sound:', e)});
   };
 
-  useEffect(() => {
-    console.log('Speed limit changed:', speedLimit);
-    if (speedLimit <= 0) return; // Không chơi âm thanh nếu không có giới hạn tốc độ
+  const playAudio = (sourceFile: string): Promise<void> => {
+    return new Promise((resolve) => {
+      const audio = new Audio(sourceFile);
+      audio.onended = () => resolve();
+      audio.onerror = () => {
+        console.warn('Audio file not found or error:', sourceFile);
+        resolve(); // resolve anyway to keep queue moving
+      };
+      audio.play().catch(() => resolve());
+    });
+  };
 
-    const playAudio = (sourceFile: string): Promise<void> => {
-      return new Promise((resolve, reject) => {
-        const audio = new Audio(sourceFile);
+  const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
-        audio.onended = () => resolve();
-        audio.onerror = (e) => reject(e);
+  const processQueue = async () => {
+    if (isPlayingRef.current) return;
+    if (audioQueueRef.current.length === 0) return;
 
-        audio.play().catch(reject);
-      });
-    };
+    isPlayingRef.current = true;
 
-    const delay = (ms: number) =>
-      new Promise(resolve => setTimeout(resolve, ms));
-
-    const playSequence = async () => {
+    while (audioQueueRef.current.length > 0) {
+      const limit = audioQueueRef.current.shift()!;
+      console.log(`[AudioQueue] Playing sequence for speed limit: ${limit}`);
       try {
         await playAudio('/audio/ding.ogg');
-
         await playAudio('/audio/the_speed_limit_has_changed_to.ogg');
-
-        await delay(300); // ⬅️ nghỉ 2 giây ở giữa
-
-        await playAudio(`/audio/speedLimit/${Math.abs(speedLimit)}kmh.ogg`);
+        await delay(300);
+        await playAudio(`/audio/speedLimit/${Math.abs(limit)}kmh.ogg`);
       } catch (e) {
-        console.error('Audio sequence error:', e);
+        console.error('[AudioQueue] Error in sequence:', e);
       }
-    };
+    }
 
-    playSequence();
+    isPlayingRef.current = false;
+  };
+
+  useEffect(() => {
+    console.log('Speed limit changed:', speedLimit);
+    if (speedLimit <= 0) return;
+
+    // Enqueue the new speed limit value
+    audioQueueRef.current.push(speedLimit);
+    processQueue();
   }, [speedLimit]);
 
 
